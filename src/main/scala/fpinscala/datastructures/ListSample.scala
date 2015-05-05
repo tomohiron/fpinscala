@@ -27,4 +27,12 @@ object ListSample extends App {
 
   println(List.append(List(1, 2, 3), List(4, 5, 6, 7)))
   println(List.init(List(1, 2, 3, 4)))
+
+  val ints = List(1, 2, 3, 4, 5)
+  println(List.sum(ints))
+  println(List.sum2(ints))
+
+  val ds = List(1.0, 2.0, 3.0, 4.0, 5.0)
+  println(List.product(ds))
+  println(List.product2(ds))
 }

@@ -27,12 +27,27 @@ object List {
 
   // EXERCISE 3.5 (p.45)
   @annotation.tailrec // why?
-  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
-    case Cons(h, t) if f(h) => dropWhile(t, f)
-    case _ => l
-  }
+  def dropWhile[A](l: List[A])(f: A => Boolean): List[A] =
+    l match {
+      case Cons(h, t) if f(h) => dropWhile(t)(f)
+      case _ => l
+    }
 
   def setHead2[A](l: List[A], h: A): List[A] = Cons(h, tail(l))
+
+  def append[A](a1: List[A], a2: List[A]): List[A] =
+    a1 match {
+      case Nil => a2
+      case Cons(h, t) => Cons(h, append(t, a2))
+    }
+
+  // EXERCISE 3.6 (p.46)
+  // Because this list implementation is "single way list".
+  def init[A](l: List[A]): List[A] = l match {
+    case Nil => sys.error("init of empty list")
+    case Cons(_, Nil) => Nil
+    case Cons(h, t) => Cons(h, init(t))
+  }
 
   def sum(ints: List[Int]): Int = ints match {
     case Nil => 0

@@ -21,6 +21,10 @@ object ListSample extends App {
   println(List.setHead(List(1, 2, 3, 4, 5), 9))
   println(List.drop(List(1, 2, 3, 4, 5), 1))
   println(List.drop(List(1, 2, 3, 4, 5), 3))
-  println(List.dropWhile(List(1, 2, 3, 4, 5), (x: Int) => x <= 3))
-  println(List.dropWhile(List(1, 2, 3, 4, 5), (_: Int) => true))
+
+  println(List.dropWhile(List(1, 2, 3, 4, 5))(x => x <= 3))
+  println(List.dropWhile(List(1, 2, 3, 4, 5))(_ => true))
+
+  println(List.append(List(1, 2, 3), List(4, 5, 6, 7)))
+  println(List.init(List(1, 2, 3, 4)))
 }

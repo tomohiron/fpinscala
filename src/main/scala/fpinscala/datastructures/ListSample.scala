@@ -31,8 +31,20 @@ object ListSample extends App {
   val ints = List(1, 2, 3, 4, 5)
   println(List.sum(ints))
   println(List.sum2(ints))
+  println(List.sum3(ints))
 
   val ds = List(1.0, 2.0, 3.0, 4.0, 5.0)
   println(List.product(ds))
   println(List.product2(ds))
+  println(List.product3(ds))
+
+  // EXERCISE 3.8 (p.50)
+  val ex3_8 = List.foldRight(List(1, 2, 3), Nil: List[Int])(Cons(_, _))
+  println(ex3_8)
+
+  println(List.length(ints))
+  println(List.length3(ints))
+
+  println(List.foldLeft(ints, 0)(_ + _))
+  println(List.reverse(ints))
 }

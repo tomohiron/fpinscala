@@ -72,6 +72,29 @@ object List {
   def product2(ns: List[Double]) =
     foldRight(ns, 1.0)(_ * _)
 
+  // EXERCISE 3.9 (p.50)
+  def length[A](as: List[A]): Int =
+    foldRight(as, 0)((_, acc) => acc + 1)
+
+  // EXERCISE 3.10 (p.50)
+  @annotation.tailrec
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B =
+    as match {
+      case Nil => z
+      case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
+    }
+
+  // EXERCISE 3.11 (p.50)
+  def sum3(ns: List[Int]) = foldLeft(ns, 0)(_ + _)
+
+  def product3(ns: List[Double]) = foldLeft(ns, 1.0)(_ * _)
+
+  def length3[A](as: List[A]) = foldLeft(as, 0)((acc, _) => acc + 1)
+
+  // EXERCISE 3.12 (p.50)
+  def reverse[A](as: List[A]): List[A] =
+    foldLeft(as, List[A]())((acc, h) => Cons(h, acc))
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
